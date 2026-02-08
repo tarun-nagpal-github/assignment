@@ -1,0 +1,9 @@
+# Non-sensitive config for CompanySearch API
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: companysearch-config
+  namespace: companysearch
+data:
+  OPENSEARCH_HOST: "https://opensearch.example.svc.cluster.local:9200"
+  OPENSEARCH_USER: "admin"

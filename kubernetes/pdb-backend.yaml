@@ -1,0 +1,11 @@
+# Pod Disruption Budget – keep at least 2 backend pods during voluntary disruptions (e.g. node drain)
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: companysearch-backend-pdb
+  namespace: companysearch
+spec:
+  minAvailable: 2
+  selector:
+    matchLabels:
+      app: companysearch-backend

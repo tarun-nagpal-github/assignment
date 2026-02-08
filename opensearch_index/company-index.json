@@ -1,0 +1,46 @@
+{
+  "settings": {
+    "index": {},
+    "analysis": {
+      "analyzer": {
+        "industry_synonym_analyzer": {
+          "tokenizer": "standard",
+          "filter": ["lowercase", "industry_synonym_filter"]
+        }
+      },
+      "filter": {
+        "industry_synonym_filter": {
+          "type": "synonym",
+          "synonyms": [
+            "software, information technology and services, computer software, it services, information technology",
+            "tech, technology, information technology and services, computer software, computer, it services",
+            "fintech, financial services, banking, financial",
+            "healthcare, hospital, medical, health"
+          ]
+        }
+      }
+    }
+  },
+  "mappings": {
+    "properties": {
+      "id": {"type": "long"},
+      "name": {"type": "text", "fields": {"keyword": {"type": "keyword"}}},
+      "domain": {"type": "keyword"},
+      "year_founded": {"type": "integer"},
+      "industry": {
+        "type": "text",
+        "fields": {"keyword": {"type": "keyword"}},
+        "analyzer": "standard",
+        "search_analyzer": "industry_synonym_analyzer"
+      },
+      "size_range": {"type": "keyword"},
+      "locality": {"type": "text", "fields": {"keyword": {"type": "keyword"}}},
+      "country": {"type": "keyword"},
+      "linkedin_url": {"type": "keyword"},
+      "current_employee_estimate": {"type": "long"},
+      "total_employee_estimate": {"type": "long"},
+      "current_employee_estimate_by_region": {"type": "object"},
+      "total_employee_estimate_by_region": {"type": "object"}
+    }
+  }
+}

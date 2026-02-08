@@ -1,0 +1,12 @@
+.env
+.venv/
+venv/
+ingest_csv.log
+backend/data/
+frontend/node_modules/
+frontend/dist/
+# Avoid committing large dataset (download via data_ingestion_pipeline/download_company_dataset.py)
+data_ingestion_pipeline/companies_sorted
+data_ingestion_pipeline/companies_sorted.*
+data_ingestion_pipeline/*.csv
+data_ingestion_pipeline/*.zip

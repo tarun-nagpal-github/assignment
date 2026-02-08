@@ -1,0 +1,29 @@
+# Ingress – single host, path-based or separate hosts per env
+# Requires cluster Ingress controller (e.g. nginx-ingress, GKE Ingress).
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: companysearch-ingress
+  namespace: companysearch
+  annotations:
+    # Example: nginx ingress
+    # nginx.ingress.kubernetes.io/proxy-body-size: "0"
+    # nginx.ingress.kubernetes.io/proxy-read-timeout: "30"
+    # GKE: kubernetes.io/ingress.class: "gce"
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: companysearch.example.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: companysearch-frontend
+                port:
+                  number: 80
+  # Optional TLS
+  # tls:
+  #   - hosts: [companysearch.example.com]
+  #     secretName: companysearch-tls

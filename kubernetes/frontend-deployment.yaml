@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: companysearch-frontend
+  namespace: companysearch
+  labels:
+    app: companysearch-frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: companysearch-frontend
+  template:
+    metadata:
+      labels:
+        app: companysearch-frontend
+    spec:
+      containers:
+        - name: web
+          image: companysearch-frontend:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+              name: http
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "50m"
+            limits:
+              memory: "128Mi"
+              cpu: "200m"
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 15
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 3
+            periodSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: companysearch-frontend
+  namespace: companysearch
+spec:
+  selector:
+    app: companysearch-frontend
+  ports:
+    - port: 80
+      targetPort: 80
+      name: http
+  type: ClusterIP

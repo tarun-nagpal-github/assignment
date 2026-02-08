@@ -1,0 +1,278 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: #f5f5f5;
+}
+#root {
+  min-height: 100vh;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.app-header {
+  flex-shrink: 0;
+  background: #1976d2;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+.app-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.app-body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+.sidebar {
+  width: 320px;
+  background: #fff;
+  border-right: 1px solid #e0e0e0;
+  padding: 1rem;
+  overflow-y: auto;
+}
+.main {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.search-box {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+.search-box:focus {
+  outline: none;
+  border-color: #1976d2;
+  box-shadow: 0 0 0 2px rgba(25,118,210,0.2);
+}
+
+.region-selector {
+  margin-bottom: 1rem;
+}
+.region-selector label {
+  display: block;
+  font-weight: 600;
+  padding: 0.5rem 0;
+  color: #333;
+}
+.region-selector select {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.95rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.filter-section {
+  margin-bottom: 1rem;
+}
+.filter-section summary {
+  cursor: pointer;
+  font-weight: 600;
+  padding: 0.5rem 0;
+  color: #333;
+}
+.filter-section ul {
+  list-style: none;
+  margin: 0;
+  padding: 0.25rem 0;
+  max-height: 180px;
+  overflow-y: auto;
+}
+.filter-section li {
+  padding: 0.35rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+.filter-section li:hover {
+  background: #f5f5f5;
+  border-radius: 4px;
+}
+.filter-section input[type="checkbox"] {
+  margin: 0;
+}
+.filter-section .count {
+  margin-left: auto;
+  color: #666;
+  font-size: 0.875rem;
+}
+
+.input-row {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+.input-row input {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: #fff;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+.btn:hover {
+  background: #f0f0f0;
+}
+.btn-primary {
+  background: #1976d2;
+  color: #fff;
+  border-color: #1976d2;
+}
+.btn-primary:hover {
+  background: #1565c0;
+}
+.btn-block {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.results-header .total {
+  color: #666;
+  font-size: 0.875rem;
+}
+.results-header select {
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 0.875rem;
+}
+
+.results-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1rem;
+  border: 1px solid #e0e0e0;
+  transition: box-shadow 0.2s;
+}
+.card:hover {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.card h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+}
+.card h3 a {
+  color: #1976d2;
+  text-decoration: none;
+}
+.card h3 a:hover {
+  text-decoration: underline;
+}
+.card .meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  font-size: 0.875rem;
+  color: #555;
+}
+.card .meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.tags-section {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+}
+.tags-section h4 {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.9rem;
+}
+.tags-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.tags-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.35rem 0;
+  font-size: 0.875rem;
+}
+.tags-list button {
+  padding: 0.2rem 0.5rem;
+  font-size: 0.75rem;
+  border: none;
+  background: #ffebee;
+  color: #c62828;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.tags-list button.apply {
+  background: #e3f2fd;
+  color: #1565c0;
+  margin-right: 0.25rem;
+}
+.tag-create {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+}
+.tag-create input {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.loading, .error {
+  padding: 1rem;
+  text-align: center;
+  color: #666;
+}
+.error {
+  color: #c62828;
+}
